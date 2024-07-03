@@ -1,2 +1,2 @@
-gspread
-oauth2client
+gspread==5.7.2
+google-auth==2.22.0
