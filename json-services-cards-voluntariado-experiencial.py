@@ -1,28 +1,27 @@
-import gspread
 import json
+import gspread
+from google.oauth2.service_account import Credentials
 
-#---------Permisos archivo drive
-# Ruta al archivo JSON de credenciales descargado
-credenciales = 'credentials/paisderaiz-0c89982b0273.json'
+# Define los ámbitos necesarios para acceder a Google Sheets y Google Drive
+scopes = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.readonly"
+]
 
+# Lee las credenciales desde el archivo client_secrets.json
+with open('client_secrets.json') as f:
+    creds_dict = json.load(f)  # Asegúrate de que el archivo tiene un JSON válido
 
-# ID del documento de Google Sheets
+creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
+gc = gspread.authorize(creds)
+
+# Abre tu hoja de cálculo por su ID
 id_documento = '1LlilYZIDVp4al8WGNr1sdZg-OuQW6jSK5zii6zHAVwU'
-
-
-# Autenticación
-gc = gspread.service_account(filename=credenciales)
-
-# Solicitud de acceso a documento
 sh = gc.open_by_key(id_documento)
 
-# credenciales = service_account.Credentials.from_service_account_file(credenciales)
-# cliente = gspread.authorize(credenciales)
-
-
+# Tu lógica aquí...
 hoja_de_calculo = gc.open_by_key(id_documento)
 hoja = hoja_de_calculo.sheet1  # Puedes cambiar el nombre de la hoja si es necesario
-
 
 # Abre el archivo de Google Sheets (reemplaza 'Nombre de tu archivo' con el nombre de tu archivo)
 spreadsheet = gc.open("paisderaiz-info")
