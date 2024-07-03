@@ -1,9 +1,11 @@
+import os
 import gspread
 import json
+from google.oauth2.service_account import Credentials
 
-#---------Permisos archivo drive
-# Ruta al archivo JSON de credenciales descargado
-credenciales = 'https://raw.githubusercontent.com/Pais-de-Raiz/backend/main/credentials/client_secrets.json'
+# Cargar las credenciales desde la variable de entorno
+creds_dict = json.loads(os.environ['GOOGLE_SHEETS_CREDENTIALS'])
+creds = Credentials.from_service_account_info(creds_dict)
 
 
 # ID del documento de Google Sheets
@@ -11,7 +13,7 @@ id_documento = '1LlilYZIDVp4al8WGNr1sdZg-OuQW6jSK5zii6zHAVwU'
 
 
 # Autenticación
-gc = gspread.service_account(filename=credenciales)
+gc = gspread.service_account(filename=creds)
 
 # Solicitud de acceso a documento
 sh = gc.open_by_key(id_documento)
