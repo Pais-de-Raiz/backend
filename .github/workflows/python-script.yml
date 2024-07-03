@@ -43,6 +43,10 @@ jobs:
         run: |
           python json-services-cards-voluntariado-experiencial.py
 
+      - name: Run Python script 4
+        run: |
+          python json-fundaciones-card-export.py.py
+
       - name: Commit and push changes
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -64,6 +68,11 @@ jobs:
 
           if [ -n "$(git diff --name-only servicios-voluntariado-experiencial.json)" ]; then
             git add servicios-voluntariado-experiencial.json
+            CHANGED=true
+          fi
+
+          if [ -n "$(git diff --name-only fundaciones-cards.json.json)" ]; then
+            git add fundaciones-cards.json.json
             CHANGED=true
           fi
 
