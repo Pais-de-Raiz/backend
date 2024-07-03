@@ -68,6 +68,7 @@ jobs:
           fi
 
           if [ "$CHANGED" = true ]; then
+            git pull --rebase https://x-access-token:${GH_PAT}@github.com/Pais-de-Raiz/backend.git main
             git commit -m 'Update JSON files'
             git push https://x-access-token:${GH_PAT}@github.com/Pais-de-Raiz/backend.git HEAD:main
           else
