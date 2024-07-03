@@ -72,7 +72,7 @@ jobs:
           fi
 
           if [ -n "$(git diff --name-only fundaciones-cards.json.json)" ]; then
-            git add fundaciones-cards.json.json
+            git add fundaciones-cards.json
             CHANGED=true
           fi
 
