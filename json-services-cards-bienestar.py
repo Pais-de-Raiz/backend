@@ -1,14 +1,11 @@
 import json
-import os
 import gspread
 from google.oauth2.service_account import Credentials
 
-# Lee las credenciales desde la variable de entorno
-creds_json = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
-if creds_json is None:
-    raise ValueError('GOOGLE_SHEETS_CREDENTIALS environment variable is missing.')
+# Lee las credenciales desde el archivo client_secrets.json
+with open('client_secrets.json') as f:
+    creds_dict = json.load(f)
 
-creds_dict = json.loads(creds_json)
 creds = Credentials.from_service_account_info(creds_dict)
 gc = gspread.authorize(creds)
 
@@ -16,8 +13,10 @@ gc = gspread.authorize(creds)
 id_documento = '1LlilYZIDVp4al8WGNr1sdZg-OuQW6jSK5zii6zHAVwU'
 sh = gc.open_by_key(id_documento)
 
-# Solicitud de acceso a documento
-sh = gc.open_by_key(id_documento)
+
+creds_dict = json.loads(creds_json)
+creds = Credentials.from_service_account_info(creds_dict)
+gc = gspread.authorize(creds)
 
 hoja_de_calculo = gc.open_by_key(id_documento)
 hoja = hoja_de_calculo.sheet1  # Puedes cambiar el nombre de la hoja si es necesario
