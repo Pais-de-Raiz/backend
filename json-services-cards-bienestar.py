@@ -3,7 +3,7 @@ import json
 
 #---------Permisos archivo drive
 # Ruta al archivo JSON de credenciales descargado
-credenciales = 'credentials/paisderaiz-0c89982b0273.json'
+credenciales = 'https://raw.githubusercontent.com/Pais-de-Raiz/backend/main/credentials/client_secrets.json'
 
 
 # ID del documento de Google Sheets
