@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Python script 4
         run: |
-          python json-fundaciones-card-export.py.py
+          python json-fundaciones-card-export.py
 
       - name: Commit and push changes
         env:
