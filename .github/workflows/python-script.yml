@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11.7' # Elige la versión de Python que necesitas
+          python-version: '3.11.7' # Especifica la versión de Python que necesitas
 
       - name: Install dependencies
         run: |
@@ -28,17 +28,17 @@ jobs:
       - name: Run Python script 1
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python3 json-services-cards-bienestar.py # Reemplaza 'script1.py' con el nombre de tu primer archivo
+        run: python json-services-cards-bienestar.py # Asegúrate de que este archivo exista
 
       - name: Run Python script 2
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python3 json-services-cards-gestion-comunidades.py # Reemplaza 'script2.py' con el nombre de tu segundo archivo
+        run: python json-services-cards-gestion-comunidades.py # Asegúrate de que este archivo exista
 
       - name: Run Python script 3
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python json-services-cards-voluntariado-experiencial.py # Reemplaza 'script3.py' con el nombre de tu tercer archivo
+        run: python json-services-cards-voluntariado-experiencial.py # Asegúrate de que este archivo exista
 
       - name: Commit and push changes
         run: |
@@ -47,5 +47,3 @@ jobs:
           git add data.json
           git commit -m 'Update JSON data'
           git push
-
-
