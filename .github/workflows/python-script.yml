@@ -25,20 +25,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt # Asegúrate de tener un archivo requirements.txt con tus dependencias
 
-      - name: Run Python script 1
+      - name: Set up Google Sheets credentials
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python json-services-cards-bienestar.py # Asegúrate de que este archivo exista
+        run: |
+          echo "${GOOGLE_SHEETS_CREDENTIALS}" > client_secrets.json
+
+      - name: Run Python script 1
+        run: |
+          python json-services-cards-bienestar.py
 
       - name: Run Python script 2
-        env:
-          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python json-services-cards-gestion-comunidades.py # Asegúrate de que este archivo exista
+        run: |
+          python json-services-cards-gestion-comunidades.py
 
       - name: Run Python script 3
-        env:
-          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
-        run: python json-services-cards-voluntariado-experiencial.py # Asegúrate de que este archivo exista
+        run: |
+          python json-services-cards-voluntariado-experiencial.py
 
       - name: Commit and push changes
         run: |
