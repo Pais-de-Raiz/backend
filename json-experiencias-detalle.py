@@ -24,7 +24,7 @@ hoja_de_calculo = gc.open_by_key(id_documento)
 hoja = hoja_de_calculo.sheet1  # Puedes cambiar el nombre de la hoja si es necesario
 
 # Accede a la pestaña específica por su nombre
-nombre_de_la_pestaña = "servicios-detalle""
+nombre_de_la_pestaña = "servicios-detalle"
 pestaña = hoja_de_calculo.worksheet(nombre_de_la_pestaña)
 
 
