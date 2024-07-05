@@ -46,6 +46,10 @@ jobs:
       - name: Run Python script 4
         run: |
           python json-fundaciones-card-export.py
+          
+      - name: Run Python script 5
+        run: |
+          python json-experiencias-detalle.py
 
       - name: Commit and push changes
         env:
@@ -76,11 +80,16 @@ jobs:
             CHANGED=true
           fi
 
+          if [ -n "$(git diff --name-only servicios-detalle.json)" ]; then
+            git add servicios-detalle.json
+            CHANGED=true
+          fi
+
           if [ "$CHANGED" = true ]; then
             git stash
             git pull --rebase https://x-access-token:${GH_PAT}@github.com/Pais-de-Raiz/backend.git main
             git stash pop
-            git add servicios-bienestar.json servicios-gestion-comunidades.json servicios-voluntariado-experiencial.json fundaciones-cards.json
+            git add servicios-bienestar.json servicios-gestion-comunidades.json servicios-voluntariado-experiencial.json fundaciones-cards.json servicios-detalle.json
             git commit -m 'Update JSON files'
             git push https://x-access-token:${GH_PAT}@github.com/Pais-de-Raiz/backend.git HEAD:main
           else
