@@ -23,12 +23,13 @@ sh = gc.open_by_key(id_documento)
 hoja_de_calculo = gc.open_by_key(id_documento)
 hoja = hoja_de_calculo.sheet1  # Puedes cambiar el nombre de la hoja si es necesario
 
-# Selecciona la hoja específica por nombre (reemplaza 'Nombre de tu hoja' con el nombre de tu hoja)
-nombre_de_la_pestaña = "servicios-detalle"
+# Accede a la pestaña específica por su nombre
+nombre_de_la_pestaña = "servicios-detalle""
 pestaña = hoja_de_calculo.worksheet(nombre_de_la_pestaña)
 
+
 # # Obtener datos
-datos = worksheet.get_all_values()
+datos = pestaña.get_all_values()
 
 # Lista para almacenar objetos de servicios
 # objetos_servicios = []
