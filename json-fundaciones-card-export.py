@@ -48,6 +48,7 @@ for row in datos[1:]:
             'text': row[4],
             'btnText': row[5],
             'btnLink': row[6],
+            'FundacionCodigo': row[7],
         }
     }
     output.append(card_data)

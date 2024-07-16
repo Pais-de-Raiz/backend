@@ -54,6 +54,7 @@ for row in datos[1:]:
             'fundacion': row[8],
             'codigo': row[9],
             'logo': row[10],
+            'FundacionCodigo': row[11],
         }
     }
     output.append(card_data)
