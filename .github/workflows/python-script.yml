@@ -90,7 +90,7 @@ jobs:
           fi
 
           if [ -n "$(git diff --name-only json-equipo.json)" ]; then
-            git add json-equipo.json
+            git add equipo.json
             CHANGED=true
           fi
 
