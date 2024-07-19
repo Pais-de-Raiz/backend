@@ -36,35 +36,35 @@ jobs:
           python json-services-cards-bienestar.py
 
       - name: Wait before running next script
-        run: sleep 60
+        run: sleep 5
 
       - name: Run Python script 2
         run: |
           python json-services-cards-gestion-comunidades.py
 
       - name: Wait before running next script
-        run: sleep 60
+        run: sleep 5
 
       - name: Run Python script 3
         run: |
           python json-services-cards-voluntariado-experiencial.py
 
       - name: Wait before running next script
-        run: sleep 60
+        run: sleep 5
 
       - name: Run Python script 4
         run: |
           python json-fundaciones-card-export.py
 
       - name: Wait before running next script
-        run: sleep 60
+        run: sleep 5
 
       - name: Run Python script 5
         run: |
           python json-experiencias-detalle.py
 
       - name: Wait before running next script
-        run: sleep 60
+        run: sleep 5
 
       - name: Run Python script 6
         run: |
